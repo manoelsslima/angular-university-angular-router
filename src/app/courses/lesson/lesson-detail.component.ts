@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LessonDetail} from "../model/lesson-detail";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 
 @Component({
@@ -13,14 +13,14 @@ export class LessonDetailComponent implements OnInit {
 
   lesson$: Observable<LessonDetail>;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
 
     console.log("Created LessonDetailComponent...");
 
   }
 
   ngOnInit() {
-
+    this.lesson$ = of(this.route.snapshot.data["lesson"]);
   }
 
 
