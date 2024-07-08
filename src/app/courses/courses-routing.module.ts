@@ -8,6 +8,7 @@ import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { LessonsResolver } from './services/lessons.resolver';
 import { LessonDetailResolver } from './services/lesson-detail.resolver';
 import { AuthGuard } from '../services/auth.guard';
+import { ConfirmExitGuard } from '../services/confirm-exit.guard';
 
 
   const routes: Routes = [
@@ -20,6 +21,7 @@ import { AuthGuard } from '../services/auth.guard';
       component: CourseComponent,
       canActivate: [AuthGuard],
       canActivateChild: [AuthGuard],
+      canDeactivate: [ConfirmExitGuard],
       children: [
         {
           path: "",
@@ -51,7 +53,8 @@ import { AuthGuard } from '../services/auth.guard';
     CourseResolver,
     LessonsResolver,
     LessonDetailResolver,
-    AuthGuard
+    AuthGuard,
+    ConfirmExitGuard
   ]
 })
 export class CoursesRoutingModule {
