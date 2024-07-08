@@ -11,7 +11,7 @@ import {map} from "rxjs/operators";
 })
 export class LessonDetailComponent implements OnInit {
 
-  lesson$: Observable<LessonDetail>;
+  lesson: LessonDetail;
 
   constructor(private route: ActivatedRoute, private router: Router) {
 
@@ -20,7 +20,7 @@ export class LessonDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lesson$ = of(this.route.snapshot.data["lesson"]);
+    this.lesson = this.route.snapshot.data["lesson"];
   }
 
   previus(lesson: LessonDetail) {
