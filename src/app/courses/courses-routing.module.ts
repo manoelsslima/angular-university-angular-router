@@ -19,6 +19,7 @@ import { AuthGuard } from '../services/auth.guard';
       path: ":courseUrl",
       component: CourseComponent,
       canActivate: [AuthGuard],
+      canActivateChild: [AuthGuard],
       children: [
         {
           path: "",
